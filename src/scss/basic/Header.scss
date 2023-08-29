@@ -1,0 +1,36 @@
+.header-container{
+  & .header-wrapper{
+    position: relative;
+    height: 80px;
+    width: 100%;
+    background-color: var(--main-color);
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 10px;
+      width: 100%;
+      background-color: var(--secondary-color);
+      bottom: 0px;
+    }
+    .nav{
+      width: 90%;
+      margin: 0px auto;
+      padding-top: 10px;
+      .nav-title{
+        display: flex;
+        align-items: center;
+        .nav-title-logo{
+          width: 54px;
+          margin-right: 8px;
+        }
+        .nav-title-text{
+          font-size: 30px;
+          font-weight: 900;
+          font-family: var(--main-font-family);
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+$screen-extra-break-point:1200px;
+$screen-phone-point: 991px;
+$screen-break-point: 992px;
+
+@media screen and (max-width: $screen-phone-point) {
+  .header-container{
+    .nav{
+      .nav-title{
+        .nav-title-text{
+          display: none;
+        }
+      }
+    }
+  }
+}

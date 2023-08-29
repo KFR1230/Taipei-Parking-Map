@@ -1,0 +1,7 @@
+.footer-container{
+  & .footer-wrapper{
+    height: 50px;
+    width: 100%;
+    background-color: var(--main-color);
+  }
+}
