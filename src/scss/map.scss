@@ -1,6 +1,28 @@
 // map
 .map-container {
   height: 100%;
+  position: relative;
+  .location-btn{
+    position: absolute;
+    z-index: 800;
+    border-radius: 25px;  
+    height: 34px;
+    width: 34px;
+    background-color: var(--main-button); 
+    background-image: url(../assets/images/target25.png);
+    background-position: 53%;
+    background-repeat:no-repeat;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+    right:11px;
+    bottom: 122px;
+    cursor: pointer;
+    &[disabled]{
+      background-image: url(../assets/images/targetLoading25.png);
+    }
+    &:hover {
+      background-color: var(--secondary-button);
+    }
+  }
   .leaflet-container {
     height: 100%;
   }
@@ -56,7 +78,7 @@
     left: unset !important;
     top: unset !important;
     right: 0;
-    bottom: 5%;
+    bottom: 35px;
     &.leaflet-left .leaflet-control {
       margin-right: 10px;
       margin-bottom: 10px;
