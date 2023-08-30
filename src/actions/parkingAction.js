@@ -3,7 +3,7 @@ const { fetchingParkingInfo, fetchingParkingNum } = require('../api/parkingAPI')
 
 export const getParkingInfo = createAsyncThunk('parking/parkingInfo', async () => {
   const res = await fetchingParkingInfo()
-  console.log('getParkingInfo:',res.data.data);
+  // console.log('getParkingInfo:',res.data.data);
   return res.data.data
 });
 
@@ -11,7 +11,7 @@ export const getParkingNum = createAsyncThunk(
   'parking/parkingNum',
   async () => {
     const res = await fetchingParkingNum();
-    console.log('getParkingNum:', res);
+    // console.log('getParkingNum:', res);
     return res.data.data;
   }
 );
