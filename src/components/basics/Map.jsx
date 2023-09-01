@@ -1,21 +1,22 @@
-import { icon } from 'leaflet';
 import { useEffect, useState } from 'react';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { useDispatch, useSelector } from 'react-redux';
 import { getParkingInfo, getParkingNum } from '../../actions/parkingAction';
 import twd97_to_latlng from '../../helper/covert';
 import getCurrentPosition from '../../helper/location';
 import { currentParkingActions } from '../../store/currentParkingInfo';
+import CenterCheck from './CenterCheck';
+import MarkerLocation from './MarkerLocation';
 import MarkerPark from './MarkerPark';
-import currentLocation from '../../assets/images/map32.png';
 
 const Map = () => {
   //試著使用createAsyncThunk來取得定位值，但出現了「A non-serializable value was detected in an action, in the path: `payload`.」Redux要求state都是可序列化的（可轉成JSON的），不可使用非序列化當作值，因此更改成使用useState儲存
-  const [center] = useState([25.03566, 121.520146]); // 中心點座標
+  const [center] = useState([25.03566, 121.520146]); // 初始中心點座標
   const [latitude, setLatitude] = useState(center[0]);
   const [longitude, setLongitude] = useState(center[1]);
   const [isLocationLoading, setIsLocationLoading] = useState(false);
+  
   //取得initial state
   const { parkingInfo, isParkingInfoLoading } = useSelector(
     (state) => state.parkingInfo
@@ -24,25 +25,17 @@ const Map = () => {
     (state) => state.parkingNum
   );
   const { currentPark } = useSelector((state) => state.currentParking);
-  const dispatch = useDispatch();
-  // *** 放置地圖
+  const { nearlyPark } = useSelector((state) => state.crossPosition);
 
-  //前往指定位置
-  //中心外圍有哪些
+  const dispatch = useDispatch();
 
   const handlerClickLink = (name) => {
-    console.log(name);
     window.open(`https://www.google.com/maps/dir/${center}/${name}`, '_blank');
   };
 
-  const markerIcon = new icon({
-    iconUrl: currentLocation,
-    iconSize: [32, 32],
-  });
-
-  const handleClickTarget = () => {
+  const handleClickTarget = async () => {
     setIsLocationLoading(true);
-    getCurrentPosition()
+    await getCurrentPosition()
       .then((res) => {
         setLatitude(res.coords.latitude);
         setLongitude(res.coords.longitude);
@@ -54,6 +47,11 @@ const Map = () => {
       }); //reject
   };
 
+  const handleClickRefresh = () => {
+    window.location.reload();
+  };
+ 
+
   useEffect(() => {
     dispatch(getParkingInfo());
     dispatch(getParkingNum());
@@ -63,7 +61,6 @@ const Map = () => {
     if (!(parkingInfo && parkingNum)) {
       return;
     }
-
     dispatch(
       currentParkingActions.mergeParkInfo([
         parkingInfo?.payload?.park,
@@ -71,10 +68,10 @@ const Map = () => {
       ])
     );
   }, [parkingInfo, parkingNum]);
- 
+  // *** 放置地圖
   return (
     <div className="map-container container">
-      <MapContainer center={center} zoom={12}>
+      <MapContainer center={center} zoom={16}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -95,11 +92,23 @@ const Map = () => {
             })}
         </MarkerClusterGroup>
         {!isLocationLoading && (
-          <Marker position={[latitude,longitude]} icon={markerIcon} />
+          <MarkerLocation
+            latitude={latitude}
+            longitude={longitude}
+            isLocationLoading={isLocationLoading}
+          />
         )}
+        {!isLocationLoading &&
+        <CenterCheck latitude={latitude} longitude={longitude} />}
+        {/* 抓中心點為止 */}
       </MapContainer>
       <button
-        className="location-btn"
+        className="refresh-btn btn"
+        disabled={isLocationLoading ? true : false}
+        onClick={handleClickRefresh}
+      />
+      <button
+        className="location-btn btn"
         disabled={isLocationLoading ? true : false}
         onClick={handleClickTarget}
       />

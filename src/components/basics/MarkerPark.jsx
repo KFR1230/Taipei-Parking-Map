@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 
 const MarkerPark = (...props) => {
   const {lat, lng , park , onClick} = props[0]
+
   const markerIcon = new icon({
     iconUrl: parking,
     iconSize: [32, 32],
