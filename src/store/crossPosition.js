@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import centerDis from '../helper/centerDis';
+import sort from '../helper/SelectionSort';
 
 const initialState = {
   nearlyPark: [],
@@ -11,7 +12,7 @@ const crossPositionSlice = createSlice({
   initialState,
   reducers: {
     setNearlyPark: (state, action) => {
-      state.nearlyPark = centerDis(action.payload);
+      state.nearlyPark = sort(centerDis(action.payload));
     },
     setNearlyParkLoading: (state)=>{
       state.isNearlyParkLoading = true

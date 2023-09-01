@@ -11,7 +11,6 @@ import MarkerLocation from './MarkerLocation';
 import MarkerPark from './MarkerPark';
 
 const Map = () => {
-  //試著使用createAsyncThunk來取得定位值，但出現了「A non-serializable value was detected in an action, in the path: `payload`.」Redux要求state都是可序列化的（可轉成JSON的），不可使用非序列化當作值，因此更改成使用useState儲存
   const [center] = useState([25.03566, 121.520146]); // 初始中心點座標
   const [latitude, setLatitude] = useState(center[0]);
   const [longitude, setLongitude] = useState(center[1]);
