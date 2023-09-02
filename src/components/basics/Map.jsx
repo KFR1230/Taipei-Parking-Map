@@ -7,6 +7,7 @@ import twd97_to_latlng from '../../helper/covert';
 import getCurrentPosition from '../../helper/location';
 import { currentParkingActions } from '../../store/currentParkingInfo';
 import CenterCheck from './CenterCheck';
+import CollapsePark from './CollapsePark';
 import MarkerLocation from './MarkerLocation';
 import MarkerPark from './MarkerPark';
 
@@ -24,12 +25,12 @@ const Map = () => {
     (state) => state.parkingNum
   );
   const { currentPark } = useSelector((state) => state.currentParking);
-  const { nearlyPark } = useSelector((state) => state.crossPosition);
+  
 
   const dispatch = useDispatch();
 
   const handlerClickLink = (name) => {
-    window.open(`https://www.google.com/maps/dir/${center}/${name}`, '_blank');
+    window.open(`https://www.google.com/maps/dir/${latitude},${longitude}/${name}`, '_blank');
   };
 
   const handleClickTarget = async () => {
@@ -97,8 +98,9 @@ const Map = () => {
             isLocationLoading={isLocationLoading}
           />
         )}
-        {!isLocationLoading &&
-        <CenterCheck latitude={latitude} longitude={longitude} />}
+        {!isLocationLoading && (
+          <CenterCheck latitude={latitude} longitude={longitude} />
+        )}
         {/* 抓中心點為止 */}
       </MapContainer>
       <button
@@ -111,6 +113,7 @@ const Map = () => {
         disabled={isLocationLoading ? true : false}
         onClick={handleClickTarget}
       />
+      {/* <CollapsePark latitude={latitude} longitude={longitude}/> */}
     </div>
   );
 };

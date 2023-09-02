@@ -59,6 +59,9 @@
   }
   .leaflet-container {
     height: 100%;
+    .leaflet-control{
+      display: none;
+    }
   }
   .swiper {
     width: 100%;
