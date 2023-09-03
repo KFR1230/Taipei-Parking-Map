@@ -2,13 +2,29 @@
 :root {
   --main-font-family: 'Noto Sans TC', 'Montserrat', sans-serif;
   --main-color: #F29F05;
-  --primary-color: #F29F05;
+  --primary-color: #F2CB05;
   --secondary-color: #F2CB05;
   --third-color: #c0c1c6;
-  --success-color: #3dd598;
-  --warning-color: #ffc542;
+  --success-color: #fff;
+  --warning-color: #c0c1c6;
   --error-color: #fc5a5a;
   --main-border: #e6ecf0;
-  --main-button: #fff;
-  --secondary-button: #f3f4f7;
+  --main-button: #f3f4f7;
+  --secondary-button:#2168c5;
+  --night-mode: url(../assets/images/light24.png);
+}
+
+[data-theme='dark']{
+  --main-font-family: 'Noto Sans TC', 'Montserrat', sans-serif;
+  --main-color: #895b04;
+  --primary-color: #826d05;
+  --secondary-color: #F2CB05;
+  --third-color: #8d8f99b2;
+  --success-color: #81818272;
+  --warning-color: #525453b5;
+  --error-color: #fc5a5a;
+  --main-border: #e6ecf0;
+  --main-button: #f3f4f7;
+  --secondary-button: #245e86;
+  --night-mode: url(../assets/images/moon24.png);
 }

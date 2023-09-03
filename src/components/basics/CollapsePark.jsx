@@ -4,13 +4,15 @@ import ParkCard from './ParkCard';
 const CollapsePark = (...props) => {
   const { nearlyPark } = useSelector((state) => state.crossPosition);
   const { latitude, longitude } = props[0];
-  
-   const handlerClickLink = (name) => {
-     window.open(
-       `https://www.google.com/maps/dir/${latitude},${longitude}/${name}`,
-       '_blank'
-     );
-   };
+  const first100Park = nearlyPark.slice(0, 100);
+  //先取得前100筆資料，infinity scroll的使用
+  const handlerClickLink = (name) => {
+    window.open(
+      `https://www.google.com/maps/dir/${latitude},${longitude}/${name}`,
+      '_blank'
+    );
+  };
+
   return (
     <>
       <div className="collapse-container">
@@ -24,9 +26,15 @@ const CollapsePark = (...props) => {
           </div>
           <div className="collapse-nearlyPark">
             <div className="nearlyPark-list">
-              {nearlyPark &&
-                nearlyPark.map((park) => {
-                  return <ParkCard key={park.id} park={park} onClick={handlerClickLink}/>;
+              {first100Park &&
+                first100Park.map((park) => {
+                  return (
+                    <ParkCard
+                      key={park.id}
+                      park={park}
+                      onClick={handlerClickLink}
+                    />
+                  );
                 })}
             </div>
           </div>

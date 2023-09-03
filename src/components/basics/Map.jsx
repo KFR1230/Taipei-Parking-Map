@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { useDispatch, useSelector } from 'react-redux';
 import { getParkingInfo, getParkingNum } from '../../actions/parkingAction';
@@ -16,7 +16,6 @@ const Map = () => {
   const [latitude, setLatitude] = useState(center[0]);
   const [longitude, setLongitude] = useState(center[1]);
   const [isLocationLoading, setIsLocationLoading] = useState(false);
-  
   //取得initial state
   const { parkingInfo, isParkingInfoLoading } = useSelector(
     (state) => state.parkingInfo
@@ -25,14 +24,15 @@ const Map = () => {
     (state) => state.parkingNum
   );
   const { currentPark } = useSelector((state) => state.currentParking);
-  
-
+  const { nearlyPark } = useSelector((state) => state.crossPosition);
+  const { themeMode } = useSelector((state) => state.dataTheme);
   const dispatch = useDispatch();
-
   const handlerClickLink = (name) => {
-    window.open(`https://www.google.com/maps/dir/${latitude},${longitude}/${name}`, '_blank');
+    window.open(
+      `https://www.google.com/maps/dir/${latitude},${longitude}/${name}`,
+      '_blank'
+    );
   };
-
   const handleClickTarget = async () => {
     setIsLocationLoading(true);
     await getCurrentPosition()
@@ -50,13 +50,11 @@ const Map = () => {
   const handleClickRefresh = () => {
     window.location.reload();
   };
- 
 
   useEffect(() => {
     dispatch(getParkingInfo());
     dispatch(getParkingNum());
   }, []);
-
   useEffect(() => {
     if (!(parkingInfo && parkingNum)) {
       return;
@@ -72,10 +70,18 @@ const Map = () => {
   return (
     <div className="map-container container">
       <MapContainer center={center} zoom={16}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-        />
+        {themeMode && (
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          />
+        )}
+        {!themeMode && (
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          />
+        )}
         <MarkerClusterGroup>
           {currentPark &&
             currentPark.map((park) => {
@@ -113,7 +119,7 @@ const Map = () => {
         disabled={isLocationLoading ? true : false}
         onClick={handleClickTarget}
       />
-      {/* <CollapsePark latitude={latitude} longitude={longitude}/> */}
+      {nearlyPark && <CollapsePark latitude={latitude} longitude={longitude} />}
     </div>
   );
 };

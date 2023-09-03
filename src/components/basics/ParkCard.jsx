@@ -1,13 +1,37 @@
 import Button from '@mui/material/Button';
-import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+import { useCallback, useEffect, useState } from 'react';
+
 const ParkCard = (park) => {
-  const { name, availablecar } = park.park;
+  const { name, availablecar, lat, lng } = park.park;
   const { onClick } = park;
+  const [isavailablecar, setIsAvailablecar] = useState(false);
+  
+
+  // const handlermoveToPosition = useCallback(() => {
+  //   map.setView([lat, lng], 16);
+  // },[]);
+
+  useEffect(() => {
+    function isAvailablecarNum() {
+      if (availablecar <= 0) {
+        setIsAvailablecar(false);
+        return;
+      }
+      setIsAvailablecar(true);
+    }
+    isAvailablecarNum();
+  }, [park]);
+
   return (
     <>
       <Card sx={{ maxWidth: 350 }} className="card-container">
-        <CardActionArea className="card-wrapper">
+        <CardMedia
+          className="card-wrapper"
+          data-available={isavailablecar}
+          // onClick={handlermoveToPosition}
+        >
           <CardContent className="card-Content">
             <Typography
               gutterBottom
@@ -25,7 +49,7 @@ const ParkCard = (park) => {
               剩餘車位：{availablecar}
             </Typography>
           </CardContent>
-        </CardActionArea>
+        </CardMedia>
         <Button
           variant="contained"
           endIcon={<TravelExploreIcon />}
