@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/KFR1230/Taipei-Parking-Map/static/css/main.dec9e3b9.css",
+    "main.js": "/KFR1230/Taipei-Parking-Map/static/js/main.a30f8fcd.js",
+    "static/js/787.01cb67be.chunk.js": "/KFR1230/Taipei-Parking-Map/static/js/787.01cb67be.chunk.js",
+    "index.html": "/KFR1230/Taipei-Parking-Map/index.html",
+    "main.dec9e3b9.css.map": "/KFR1230/Taipei-Parking-Map/static/css/main.dec9e3b9.css.map",
+    "main.a30f8fcd.js.map": "/KFR1230/Taipei-Parking-Map/static/js/main.a30f8fcd.js.map",
+    "787.01cb67be.chunk.js.map": "/KFR1230/Taipei-Parking-Map/static/js/787.01cb67be.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dec9e3b9.css",
+    "static/js/main.a30f8fcd.js"
+  ]
+}
