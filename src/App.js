@@ -3,9 +3,9 @@ import 'leaflet/dist/leaflet.css';
 import MapPage from './components/pages/MapPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
-
+  const basename = process.env.PUBLIC_URL;
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route path="/main" element={<MapPage />}></Route>
         <Route path="*" element={<MapPage />}></Route>
