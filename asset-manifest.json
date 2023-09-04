@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/KFR1230/Taipei-Parking-Map/static/css/main.ec542c7e.css",
-    "main.js": "/KFR1230/Taipei-Parking-Map/static/js/main.87f9a456.js",
+    "main.css": "/KFR1230/Taipei-Parking-Map/static/css/main.dec9e3b9.css",
+    "main.js": "/KFR1230/Taipei-Parking-Map/static/js/main.5a5a5caf.js",
     "static/js/787.01cb67be.chunk.js": "/KFR1230/Taipei-Parking-Map/static/js/787.01cb67be.chunk.js",
     "index.html": "/KFR1230/Taipei-Parking-Map/index.html",
-    "main.ec542c7e.css.map": "/KFR1230/Taipei-Parking-Map/static/css/main.ec542c7e.css.map",
-    "main.87f9a456.js.map": "/KFR1230/Taipei-Parking-Map/static/js/main.87f9a456.js.map",
+    "main.dec9e3b9.css.map": "/KFR1230/Taipei-Parking-Map/static/css/main.dec9e3b9.css.map",
+    "main.5a5a5caf.js.map": "/KFR1230/Taipei-Parking-Map/static/js/main.5a5a5caf.js.map",
     "787.01cb67be.chunk.js.map": "/KFR1230/Taipei-Parking-Map/static/js/787.01cb67be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ec542c7e.css",
-    "static/js/main.87f9a456.js"
+    "static/css/main.dec9e3b9.css",
+    "static/js/main.5a5a5caf.js"
   ]
 }
