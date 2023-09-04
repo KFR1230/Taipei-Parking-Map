@@ -1,44 +1,61 @@
+import clsx from 'clsx';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import logo from '../../assets/images/parking-area.png';
+import logo from '../../assets/images/spaces64.png';
 import { dataThemeActions } from '../../store/dataTheme';
+import NightModeBtn from './NightModeBtn';
 
 const Header = () => {
-  const dispatch = useDispatch()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useDispatch();
   const handlerDarkMode = (e) => {
     if (e.target.checked === true) {
-      document.documentElement.setAttribute('data-theme', 'dark')
-      dispatch(dataThemeActions.setNightMode())
-      return
-    }else{
+      document.documentElement.setAttribute('data-theme', 'dark');
+      dispatch(dataThemeActions.setNightMode());
+      return;
+    } else {
       document.documentElement.setAttribute('data-theme', 'light');
       dispatch(dataThemeActions.setLightMode());
-      return
+      return;
     }
+  };
+  const handlerMenuMode = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <header>
       <div className="header-container container">
         <div className="header-wrapper">
-          <nav className="nav">
-            <div className="nav-title">
+          <nav className="nav-container">
+            <section className="nav-title">
               <img src={logo} alt="nav-title-logo" className="nav-title-logo" />
               <span className="nav-title-text">City Parking</span>
-            </div>
-            <div className="night-mode">
-              <label
-                className="sidebar__darkmode__label"
-                htmlFor="dark__mode__toggle"
-              ></label>
-              <input
-                type="checkbox"
-                className="night-mode-btn"
-                onChange={handlerDarkMode}
-                id="dark__mode__toggle"
+            </section>
+            <section className="nav-info">
+              <NightModeBtn onChange={handlerDarkMode} />
+              <button
+                className={`nav-menu-btn ${clsx('', { active: isMenuOpen })}`}
+                onClick={handlerMenuMode}
               />
-            </div>
-            <div className="nav-menu"></div>
+              <div className={`nav-menu ${clsx('', { active: isMenuOpen })}`}>
+                <div className="nav-menu-list">
+                  <a href="＃" className="nav-menu-item">
+                    首頁
+                  </a>
+                  <a href="＃" className="nav-menu-item">
+                    地圖
+                  </a>
+                  <a href="＃" className="nav-menu-item">
+                    使用說明
+                  </a>
+                </div>
+              </div>
+            </section>
           </nav>
+          {isMenuOpen && (
+            <div className="nav-menu--list-extend" onClick={handlerMenuMode} />
+          )}
         </div>
       </div>
     </header>

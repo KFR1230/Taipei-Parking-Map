@@ -1,12 +1,77 @@
-$screen-extra-break-point:1200px;
+$screen-extra-break-point: 1200px;
+$screen-pad-point: 560px;
 $screen-phone-point: 390px;
-$screen-break-point: 992px;
+
+@media screen and (max-width: $screen-pad-point) {
+  .nav-info {
+    & .nav-menu-btn {
+      width: 30px;
+      height: 30px;
+      margin-left: 5px;
+      background-image: url(../assets/images/menu24.png);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: rotate(0deg);
+      transition: transform 0.2s ease-out;
+      cursor: pointer;
+      &.active {
+        transform: rotate(-90deg);
+        transition: transform 0.2s ease-out 0.2s;
+      }
+    }
+    & .nav-menu {
+      visibility: hidden;
+      position: absolute;
+      top: 70px;
+      right: 0px;
+      height: 150px;
+      width: 100%;
+      box-shadow: inset 0px 25px 31px -29px rgb(101, 98, 82);
+      border-radius: 0px 0px 10px 10px;
+      background-color: var(--primary-color);
+      z-index: 1200;
+      transform: scale(1, 0);
+      transition: transform 0.5s ease-in-out 0.2s;
+      transform-origin: top;
+      & .nav-menu-list {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      & .nav-menu-item {
+        opacity: 0;
+      }
+    }
+    & .nav-menu.active {
+      visibility: visible;
+      transform: scale(1, 1);
+      transform-origin: top;
+      transition: transform 0.3s ease-out 0.2s;
+      & a {
+        opacity: 1;
+        transition: opacity 0.5s ease-in 0.1s;
+      }
+    }
+  }
+  .nav-menu--list-extend {
+    background-color: #c0c1c6;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 80px;
+    opacity: 0.4;
+    z-index: 1100;
+  }
+}
 
 @media screen and (max-width: $screen-phone-point) {
-  .header-container{
-    .nav{
-      .nav-title{
-        .nav-title-text{
+  .header-container {
+    & .nav-container {
+      .nav-title {
+        .nav-title-text {
           display: none;
         }
       }
@@ -89,6 +154,7 @@ $screen-break-point: 992px;
           width: 20px;
           height: 20px;
           background-position: 2px;
+          transform: rotate(90deg);
         }
         &:hover {
           opacity: 1;
