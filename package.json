@@ -1,7 +1,7 @@
 {
   "name": "parking-map",
   "version": "0.1.0",
-  "homepage": "https://github.com/KFR1230/Taipei-Parking-Map",
+  "homepage": "https://KFR1230.github.io/Taipei-Parking-Map",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
