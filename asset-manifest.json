@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/KFR1230/Taipei-Parking-Map/static/css/main.ec542c7e.css",
-    "main.js": "/KFR1230/Taipei-Parking-Map/static/js/main.202a65bf.js",
+    "main.js": "/KFR1230/Taipei-Parking-Map/static/js/main.87f9a456.js",
     "static/js/787.01cb67be.chunk.js": "/KFR1230/Taipei-Parking-Map/static/js/787.01cb67be.chunk.js",
     "index.html": "/KFR1230/Taipei-Parking-Map/index.html",
     "main.ec542c7e.css.map": "/KFR1230/Taipei-Parking-Map/static/css/main.ec542c7e.css.map",
-    "main.202a65bf.js.map": "/KFR1230/Taipei-Parking-Map/static/js/main.202a65bf.js.map",
+    "main.87f9a456.js.map": "/KFR1230/Taipei-Parking-Map/static/js/main.87f9a456.js.map",
     "787.01cb67be.chunk.js.map": "/KFR1230/Taipei-Parking-Map/static/js/787.01cb67be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ec542c7e.css",
-    "static/js/main.202a65bf.js"
+    "static/js/main.87f9a456.js"
   ]
 }
