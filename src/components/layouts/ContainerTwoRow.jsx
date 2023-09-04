@@ -6,7 +6,6 @@ const ContainerThrRow = ({children})=>{
     <div className="contanier-row">
       <Header />
       {children}
-      {/* <Footer /> */}
     </div>
   )
 }

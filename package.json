@@ -1,6 +1,7 @@
 {
   "name": "parking-map",
   "version": "0.1.0",
+  "homepage": "https://github.com/KFR1230/Taipei-Parking-Map",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -20,6 +21,7 @@
     "react-leaflet": "^4.1.0",
     "react-leaflet-cluster": "^2.1.0",
     "react-redux": "^8.1.2",
+    "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
     "sass": "^1.62.1",
@@ -30,7 +32,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
