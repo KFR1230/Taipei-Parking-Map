@@ -3,23 +3,23 @@
   min-height: 270px;
   height: 100%;
   position: relative;
-  &::before{
-    content:"";
+  &::before {
+    content: '';
     position: absolute;
     height: 10px;
     width: 1px;
     background-color: red;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     z-index: 800;
   }
-  &::after{
-    content:"";
+  &::after {
+    content: '';
     position: absolute;
     height: 1px;
     width: 10px;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: red;
     top: 50%;
     left: 50%;
@@ -35,6 +35,9 @@
     height: 34px;
     width: 34px;
     cursor: pointer;
+    &:hover {
+      background-color: var(--primary-button);
+    }
   }
   .location-btn {
     background-color: var(--main-button);
@@ -46,9 +49,6 @@
     &[disabled] {
       background-image: url(../assets/images/targetLoading25.png);
       cursor: progress;
-    }
-    &:hover {
-      background-color: var(--secondary-button);
     }
   }
   .refresh-btn {
@@ -62,13 +62,10 @@
       background-color: var(--secondary-button);
       cursor: progress;
     }
-    &:hover {
-      background-color: var(--secondary-button);
-    }
     &:active {
       animation-name: rotate;
       animation-duration: 0.1s;
-      animation-play-state:running;
+      animation-play-state: running;
       box-shadow: 0 0px 5px rgba(0, 0, 0, 0.65);
     }
     @keyframes rotate {
@@ -82,7 +79,7 @@
   }
   .leaflet-container {
     height: 100%;
-    .leaflet-control-attribution{
+    .leaflet-control-attribution {
       display: none;
     }
   }
