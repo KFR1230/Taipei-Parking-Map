@@ -48,7 +48,9 @@ const Map = () => {
   };
 
   const handleClickRefresh = () => {
-    window.location.replace('http://localhost:3000/Taipei-Parking-Map/main');
+    window.location.replace(
+      'https://kfr1230.github.io/Taipei-Parking-Map/main'
+    );
   };
 
   useEffect(() => {
