@@ -56,6 +56,9 @@ $screen-phone-point: 390px;
       }
     }
   }
+  .nav-title-logo{
+    display: initial;
+  }
   .nav-menu--list-extend {
     background-color: #c0c1c6;
     position: fixed;
@@ -64,6 +67,15 @@ $screen-phone-point: 390px;
     top: 80px;
     opacity: 0.4;
     z-index: 1100;
+  }
+
+  // HomePage main 
+  .main-wrapper{
+    justify-content: center;
+  }
+  .main-right-side{
+    transition-duration: 0.1s;
+    display: none;
   }
 }
 

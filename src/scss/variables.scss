@@ -15,6 +15,7 @@
   --secondary-text-color:rgb(218, 214, 214);;
   --secondary-button:#2168c5;
   --night-mode: url(../assets/images/light24.png);
+  --intro-mode:url(../assets/images/intro.png)
 }
 
 [data-theme='dark']{
@@ -33,4 +34,5 @@
   --secondary-text-color:#000;
   --secondary-button: #245e86;
   --night-mode: url(../assets/images/moon24.png);
+  --intro-mode:url(../assets/images/introN.png)
 }

@@ -1,11 +1,11 @@
 import Map from '../basics/Map';
-import ContainerTwoRow from '../layouts/ContainerTwoRow';
+import ContainerSecRow from '../layouts/ContainerSecRow';
 
 const MapPage = () => {
   return (
-    <ContainerTwoRow>
+    <ContainerSecRow>
       <Map />
-    </ContainerTwoRow>
+    </ContainerSecRow>
   );
 };
 

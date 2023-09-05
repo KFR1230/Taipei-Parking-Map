@@ -1,7 +1,17 @@
 .footer-container{
+  position: relative;
+  z-index: 3;
   & .footer-wrapper{
-    height: 50px;
+    height: 40px;
     width: 100%;
     background-color: var(--main-color);
+  }
+  .footer-context{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 40px;
+    font-size: 8px;
+    font-weight: 600;
   }
 }

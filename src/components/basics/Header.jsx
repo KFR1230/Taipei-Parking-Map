@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/spaces64.png';
 import { dataThemeActions } from '../../store/dataTheme';
 import NightModeBtn from './NightModeBtn';
@@ -40,15 +41,15 @@ const Header = () => {
               />
               <div className={`nav-menu ${clsx('', { active: isMenuOpen })}`}>
                 <div className="nav-menu-list">
-                  <a href="＃" className="nav-menu-item">
+                  <Link to="/" className="nav-menu-item">
                     首頁
-                  </a>
-                  <a href="＃" className="nav-menu-item">
+                  </Link>
+                  <Link to="/main" className="nav-menu-item">
                     地圖
-                  </a>
-                  <a href="＃" className="nav-menu-item">
+                  </Link>
+                  <Link to="＃" className="nav-menu-item">
                     使用說明
-                  </a>
+                  </Link>
                 </div>
               </div>
             </section>
