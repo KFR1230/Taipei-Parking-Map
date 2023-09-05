@@ -48,7 +48,7 @@ const Map = () => {
   };
 
   const handleClickRefresh = () => {
-    window.location.reload();
+    window.history.go(0);
   };
 
   useEffect(() => {
