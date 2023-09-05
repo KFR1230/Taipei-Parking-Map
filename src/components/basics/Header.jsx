@@ -47,7 +47,7 @@ const Header = () => {
                   <Link to="/main" className="nav-menu-item">
                     地圖
                   </Link>
-                  <Link to="＃" className="nav-menu-item">
+                  <Link to="/description" className="nav-menu-item">
                     使用說明
                   </Link>
                 </div>

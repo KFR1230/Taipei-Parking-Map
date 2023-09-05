@@ -76,6 +76,10 @@
   bottom: 0px;
   animation: carMove 2s;
   left: 25%;
+  cursor: pointer;
+  &:hover {
+    width: 140px;
+  }
   @keyframes carMove {
     0% {
       left: 90%;

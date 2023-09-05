@@ -1,11 +1,13 @@
 import logo from '../../assets/images/spaces128.png';
 import cover from '../../assets/images/cover1024.png';
-import intro from '../../assets/images/intro.png';
-import introN from '../../assets/images/introN.png';
 import car from '../../assets/images/car128.png';
-import { useSelect } from '@mui/base';
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
-  const { themeMode } = useSelect((state) => state.dataTheme);
+  const navigation = useNavigate()
+  const handlerClickImage = ()=>{
+    navigation('/main')
+  }
+
   return (
     <>
       <div className="main-container">
@@ -13,7 +15,7 @@ const Home = () => {
           <img src={cover} alt="main-banner" className="main-banner" />
           <section className="main-left-side">
             <div className="introduce-image" />
-            <img src={car} alt="introduce" className="car-image" />
+            <img src={car} alt="introduce" className="car-image" onClick={handlerClickImage}/>
           </section>
           <section className="main-right-side">
             <div className="title-logo">
