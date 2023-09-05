@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/spaces64.png';
 import { dataThemeActions } from '../../store/dataTheme';
 import NightModeBtn from './NightModeBtn';
@@ -9,6 +9,7 @@ import NightModeBtn from './NightModeBtn';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigation = useNavigate()
   const handlerDarkMode = (e) => {
     if (e.target.checked === true) {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -23,6 +24,9 @@ const Header = () => {
   const handlerMenuMode = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const handlerClickLogo = () => {
+    navigation('/')
+  };
 
   return (
     <header>
@@ -30,7 +34,12 @@ const Header = () => {
         <div className="header-wrapper">
           <nav className="nav-container">
             <section className="nav-title">
-              <img src={logo} alt="nav-title-logo" className="nav-title-logo" />
+              <img
+                src={logo}
+                alt="nav-title-logo"
+                className="nav-title-logo"
+                onClick={handlerClickLogo}
+              />
               <span className="nav-title-text">City Parking</span>
             </section>
             <section className="nav-info">

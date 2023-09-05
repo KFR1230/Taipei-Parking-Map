@@ -77,6 +77,15 @@ $screen-phone-point: 390px;
     transition-duration: 0.1s;
     display: none;
   }
+  //Description Page
+  .feature-list{
+    grid-template-columns: 1fr;
+  }
+  .feature-description {
+  grid-column: 1/2;
+  align-self: center;
+  font-weight: 600;
+}
 }
 
 @media screen and (max-width: $screen-phone-point) {

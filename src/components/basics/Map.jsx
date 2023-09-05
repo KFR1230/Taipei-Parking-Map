@@ -48,7 +48,7 @@ const Map = () => {
   };
 
   const handleClickRefresh = () => {
-    window.location.replace(window.location.href);
+    window.location.replace('http://localhost:3000/Taipei-Parking-Map/main');
   };
 
   useEffect(() => {
