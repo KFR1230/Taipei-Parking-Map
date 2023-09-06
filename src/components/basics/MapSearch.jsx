@@ -22,15 +22,16 @@ const MapSearch = () => {
     position: 'topright',
     showMarker: true,
     maxMarkers: 1,
-    showPopup: true,
-    autoClose: false,
-    retainZoomLevel: false,
+    zoom: 10,
+    showPopup: false,
     animateZoom: true,
-    keepResult: false,
-    searchLabel: 'Enter Address',
+    searchLabel: '請輸入地址',
+    notFoundMessage: '找不到結果',
+    autoComplete: true,
+    autoCompleteDelay: 200,
     marker: {
       // optional: L.Marker    - default L.Icon.Default
-      icon ,
+      icon,
       draggable: false,
     },
   });
