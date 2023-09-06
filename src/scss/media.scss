@@ -56,7 +56,7 @@ $screen-phone-point: 390px;
       }
     }
   }
-  .nav-title-logo{
+  .nav-title-logo {
     display: initial;
   }
   .nav-menu--list-extend {
@@ -69,23 +69,32 @@ $screen-phone-point: 390px;
     z-index: 1100;
   }
 
-  // HomePage main 
-  .main-wrapper{
+  // HomePage main
+  .main-wrapper {
     justify-content: center;
   }
-  .main-right-side{
+  .main-right-side {
     transition-duration: 0.1s;
     display: none;
   }
   //Description Page
-  .feature-list{
+  .feature-list {
     grid-template-columns: 1fr;
   }
   .feature-description {
-  grid-column: 1/2;
-  align-self: center;
-  font-weight: 600;
-}
+    grid-column: 1/2;
+    align-self: center;
+    font-weight: 600;
+  }
+  //Map search
+  .leaflet-control-container
+    .leaflet-top.leaflet-right
+    .leaflet-control-geosearch {
+    width: 300px;
+   .results.active{
+    width: calc(100% - 40px);
+   }
+  }
 }
 
 @media screen and (max-width: $screen-phone-point) {
@@ -94,7 +103,7 @@ $screen-phone-point: 390px;
       .nav-title {
         .nav-title-text {
           transition-duration: 0.2s;
-          font-size: 20px ;
+          font-size: 20px;
         }
       }
     }
@@ -183,6 +192,19 @@ $screen-phone-point: 390px;
           transition: opacity 0.1s ease-out 0.1s;
         }
       }
+    }
+  }
+  //Map search
+  .leaflet-control-container
+    .leaflet-top.leaflet-right
+    .leaflet-control-geosearch {
+    width: 200px;
+   .results.active{
+    width: calc(100% - 20px);
+   }
+   form input {
+      padding-left: 10px;
+      flex: 1;
     }
   }
 }

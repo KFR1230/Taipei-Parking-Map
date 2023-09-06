@@ -8,6 +8,7 @@ import getCurrentPosition from '../../helper/location';
 import { currentParkingActions } from '../../store/currentParkingInfo';
 import CenterCheck from './CenterCheck';
 import CollapsePark from './CollapsePark';
+import MapSearch from './MapSearch';
 import MarkerLocation from './MarkerLocation';
 import MarkerPark from './MarkerPark';
 
@@ -49,7 +50,7 @@ const Map = () => {
 
   const handleClickRefresh = () => {
     window.location.replace(
-      'https://kfr1230.github.io/Taipei-Parking-Map/main'
+      'https://kfr1230.github.io/Taipei-Parking-Map/'
     );
   };
 
@@ -84,6 +85,7 @@ const Map = () => {
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           />
         )}
+        <MapSearch />
         <MarkerClusterGroup>
           {currentPark &&
             currentPark.map((park) => {
