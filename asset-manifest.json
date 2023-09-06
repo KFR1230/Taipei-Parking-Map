@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Taipei-Parking-Map/static/css/main.5b6e6858.css",
-    "main.js": "/Taipei-Parking-Map/static/js/main.c00009e2.js",
+    "main.css": "/Taipei-Parking-Map/static/css/main.635938be.css",
+    "main.js": "/Taipei-Parking-Map/static/js/main.08cc41f1.js",
     "static/js/787.01cb67be.chunk.js": "/Taipei-Parking-Map/static/js/787.01cb67be.chunk.js",
     "static/media/intro.png": "/Taipei-Parking-Map/static/media/intro.0daa9d7a61dc807c9961.png",
     "static/media/nearlyPark.png": "/Taipei-Parking-Map/static/media/nearlyPark.5a578e2f0e90bdff98f3.png",
@@ -9,12 +9,12 @@
     "static/media/cover1024.png": "/Taipei-Parking-Map/static/media/cover1024.74c982c3e5557c188e94.png",
     "static/media/popup.png": "/Taipei-Parking-Map/static/media/popup.2afffd32a709db15d1c1.png",
     "index.html": "/Taipei-Parking-Map/index.html",
-    "main.5b6e6858.css.map": "/Taipei-Parking-Map/static/css/main.5b6e6858.css.map",
-    "main.c00009e2.js.map": "/Taipei-Parking-Map/static/js/main.c00009e2.js.map",
+    "main.635938be.css.map": "/Taipei-Parking-Map/static/css/main.635938be.css.map",
+    "main.08cc41f1.js.map": "/Taipei-Parking-Map/static/js/main.08cc41f1.js.map",
     "787.01cb67be.chunk.js.map": "/Taipei-Parking-Map/static/js/787.01cb67be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b6e6858.css",
-    "static/js/main.c00009e2.js"
+    "static/css/main.635938be.css",
+    "static/js/main.08cc41f1.js"
   ]
 }
