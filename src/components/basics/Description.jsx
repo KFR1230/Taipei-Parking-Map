@@ -10,6 +10,8 @@ import googleMap from '../../assets/images/google-maps.png';
 import openDoor from '../../assets/images/open-door16.png';
 import popup from '../../assets/images/popup.png';
 import nearlyPark from '../../assets/images/nearlyPark.png'
+import search from '../../assets/images/search.png';
+import location from '../../assets/images/location32.png';
 const Description = () => {
   return (
     <>
@@ -41,6 +43,12 @@ const Description = () => {
                 <img src={target} alt="" className="item-icon-img" />
               </div>
               <div className="item-description">取得當前位置</div>
+            </div>
+            <div className="item-list">
+              <div className="item-icon">
+                <img src={location} alt="" className="item-icon-img" />
+              </div>
+              <div className="item-description">搜尋地址位置</div>
             </div>
             <div className="item-list">
               <div className="item-icon">
@@ -95,6 +103,14 @@ const Description = () => {
               </div>
               <div className="feature-description">
                 地圖頁面，點擊左側邊框，出現的列表是離中心紅十字最近的前100筆停車場。（手機版點擊下側邊框）
+              </div>
+            </div>
+            <div className="feature-list">
+              <div className="feature-picture">
+                <img src={search} alt="" className="feature-img" />
+              </div>
+              <div className="feature-description">
+                地圖頁面，由搜尋框找尋地址。
               </div>
             </div>
           </section>
