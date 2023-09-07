@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+## City Parking
+台北市停車場即時資訊，在地圖中找尋最近的停車場查看相關資訊。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[City Parking](https://kfr1230.github.io/Taipei-Parking-Map/)
 
-## Available Scripts
+## Prerequisites
+- Node.js 14.16.0
+- react 18.2.0
 
-In the project directory, you can run:
+## Other Dependencies
+- axios 1.5.0
+- redux 4.2.1
+- redux-toolkit 1.9.5
+- sass 1.62.1
+- mui/material 5.14.7
+- clsx 1.2.1
+- leaflet 1.9.2
+- react-leaflet 4.1.0
+- react-router-dom 6.4.1
 
-### `npm start`
+## Install and Execution
+1. 請確認有無下載Node.js 和 npm
+2. 將專案clone到本地，在終端機入以下指令
+`git clone https://github.com/KFR1230/Taipei-Parking-Map.git`
+3. 安裝node_modules，在終端機輸入以下指令
+  `npm install`
+4. 在終端機輸入以下指令，開啟專案
+  `npm start`
+5. 打開瀏覽器輸入 http://localhost:3000/Taipei-Parking-Map，便可看到首頁畫面
+6. 預想停止，在終端機輸入以下指令
+  `ctrl+c`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features 功能
+1.點擊圖示可查看停車場資訊 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+!['parkInfo'](https://github.com/KFR1230/Taipei-Parking-Map/assets/123913307/0cef4592-59c5-4fa5-9215-e8ac038a6acb)
 
-### `npm test`
+2.透過地址在搜尋框中進行查詢
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+!['search'](https://github.com/KFR1230/Taipei-Parking-Map/assets/123913307/83c2099a-0e07-429d-bc6b-b1ca2e662040)
 
-### `npm run build`
+3.左側邊框可查看時中心紅十字附近的前１００筆停車場
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+!['nearlyPark'](https://github.com/KFR1230/Taipei-Parking-Map/assets/123913307/f7922c8a-76c9-4af3-8d40-176a291a1231)
