@@ -56,18 +56,15 @@ const Map = () => {
   useEffect(() => {
     dispatch(getParkingInfo());
     dispatch(getParkingNum());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (!(parkingInfo && parkingNum)) {
       return;
     }
     dispatch(
-      currentParkingActions.mergeParkInfo([
-        parkingInfo?.park,
-        parkingNum?.park,
-      ])
+      currentParkingActions.mergeParkInfo([parkingInfo?.park, parkingNum?.park])
     );
-  }, [parkingInfo, parkingNum]);
+  }, [parkingInfo, parkingNum, dispatch]);
   // *** 放置地圖
   return (
     <div className="map-container container">
