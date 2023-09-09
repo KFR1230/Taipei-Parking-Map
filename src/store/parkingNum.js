@@ -10,17 +10,17 @@ const parkingNumSlice = createSlice({
   name: 'parkingNumSlice',
   initialState,
   reducers: {},
-  extraReducers: {
-    [getParkingNum.pending]: (state) => {
+  extraReducers: (builder)=>{
+    builder.addCase(getParkingNum.pending, (state,action) => {
       state.isParkingNumLoading = true;
-    },
-    [getParkingNum.fulfilled]: (state, payload) => {
+    })
+    builder.addCase(getParkingNum.fulfilled, (state,action) => {
       state.isParkingNumLoading = false;
-      state.parkingNum = payload;
-    },
-    [getParkingNum.rejected]: (state) => {
+      state.parkingNum = action.payload;
+    })
+    builder.addCase(getParkingNum.rejected, (state,action) => {
       state.isParkingNumLoading = false;
-    },
+    })
   },
 });
 

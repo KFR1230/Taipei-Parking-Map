@@ -10,17 +10,17 @@ const parkingInfoSlice = createSlice({
   name: 'parkingInfoSlice',
   initialState,
   reducers: {},
-  extraReducers: {
-    [getParkingInfo.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(getParkingInfo.pending, (state, action) => {
       state.isParkingInfoLoading = true;
-    },
-    [getParkingInfo.fulfilled]: (state, payload) => {
-      state.isParkingInfoLoading = false;
-      state.parkingInfo = payload;
-    },
-    [getParkingInfo.rejected]: (state) => {
-      state.isParkingInfoLoading = false;
-    },
+    })
+      builder.addCase(getParkingInfo.fulfilled, (state, action) => {
+        state.isParkingInfoLoading = false;
+        state.parkingInfo = action.payload;
+      })
+      builder.addCase(getParkingInfo.rejected, (state, action) => {
+        state.isParkingInfoLoading = false;
+      })
   },
 });
 

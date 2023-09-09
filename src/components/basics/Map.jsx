@@ -63,8 +63,8 @@ const Map = () => {
     }
     dispatch(
       currentParkingActions.mergeParkInfo([
-        parkingInfo?.payload?.park,
-        parkingNum?.payload?.park,
+        parkingInfo?.park,
+        parkingNum?.park,
       ])
     );
   }, [parkingInfo, parkingNum]);
