@@ -65,10 +65,7 @@ const Map = () => {
       return;
     }
     dispatch(
-      currentParkingActions.mergeParkInfo([
-        parkingInfo?.park,
-        parkingNum?.park,
-      ])
+      currentParkingActions.mergeParkInfo([parkingInfo?.park, parkingNum?.park])
     );
   }, [parkingInfo, parkingNum,dispatch]);
   // *** 放置地圖
