@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getParkingInfo, getParkingNum } from '../../actions/parkingAction';
 import twd97_to_latlng from '../../helper/covert';
 import getCurrentPosition from '../../helper/location';
@@ -11,6 +12,7 @@ import CollapsePark from './CollapsePark';
 import MapSearch from './MapSearch';
 import MarkerLocation from './MarkerLocation';
 import MarkerPark from './MarkerPark';
+
 
 const Map = () => {
   const [center] = useState([25.03566, 121.520146]); // 初始中心點座標
@@ -28,6 +30,7 @@ const Map = () => {
   const { nearlyPark } = useSelector((state) => state.crossPosition);
   const { themeMode } = useSelector((state) => state.dataTheme);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const handlerClickLink = (name) => {
     window.open(
       `https://www.google.com/maps/dir/${latitude},${longitude}/${name}`,
@@ -49,14 +52,14 @@ const Map = () => {
   };
 
   const handleClickRefresh = () => {
-    window.location.replace('/main');
     window.location.reload();
+    navigate('/main')
   };
 
   useEffect(() => {
     dispatch(getParkingInfo());
     dispatch(getParkingNum());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (!(parkingInfo && parkingNum)) {
       return;
@@ -67,7 +70,7 @@ const Map = () => {
         parkingNum?.park,
       ])
     );
-  }, [parkingInfo, parkingNum]);
+  }, [parkingInfo, parkingNum,dispatch]);
   // *** 放置地圖
   return (
     <div className="map-container container">
