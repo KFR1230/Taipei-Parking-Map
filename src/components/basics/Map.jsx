@@ -53,7 +53,6 @@ const Map = () => {
 
   const handleClickRefresh = () => {
     window.location.reload();
-    navigate('/main')
   };
 
   useEffect(() => {
