@@ -30,7 +30,7 @@ function centerDis({ currentPark, centerPosition }) {
       distance
     );
   });
-  return nearlyPark;
+  return JSON.parse(JSON.stringify(nearlyPark));
 }
 
 export default centerDis;

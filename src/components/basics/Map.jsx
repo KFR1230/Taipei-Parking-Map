@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,24 +13,30 @@ import MapSearch from './MapSearch';
 import MarkerLocation from './MarkerLocation';
 import MarkerPark from './MarkerPark';
 
-
 const Map = () => {
   const [center] = useState([25.03566, 121.520146]); // 初始中心點座標
   const [latitude, setLatitude] = useState(center[0]);
   const [longitude, setLongitude] = useState(center[1]);
   const [isLocationLoading, setIsLocationLoading] = useState(false);
   //取得initial state
-  const { parkingInfo, isParkingInfoLoading } = useSelector(
+  const { parkingInfo, isParkingInfoLoading, parkingInfoStatus } = useSelector(
     (state) => state.parkingInfo
   );
-  const { parkingNum, isParkingNumLoading } = useSelector(
+  const { parkingNum, isParkingNumLoading, parkingNumStatus } = useSelector(
     (state) => state.parkingNum
   );
   const { currentPark } = useSelector((state) => state.currentParking);
   const { nearlyPark } = useSelector((state) => state.crossPosition);
   const { themeMode } = useSelector((state) => state.dataTheme);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+
+  const checkStatus = useCallback(() => {
+    if (!(parkingNumStatus && parkingInfoStatus)) {
+      alert('伺服器忙碌中，請幾秒後重新刷新');
+      return;
+    }
+  }, [parkingInfoStatus, parkingNumStatus]);
+
   const handlerClickLink = (name) => {
     window.open(
       `https://www.google.com/maps/dir/${latitude},${longitude}/${name}`,
@@ -50,23 +56,24 @@ const Map = () => {
         setIsLocationLoading(false);
       }); //reject
   };
-
   const handleClickRefresh = () => {
     window.location.reload();
   };
-
   useEffect(() => {
     dispatch(getParkingInfo());
     dispatch(getParkingNum());
   }, [dispatch]);
+
+  useEffect(() => {
+    checkStatus();
+  }, [parkingInfoStatus, parkingNumStatus]);
+
   useEffect(() => {
     if (!(parkingInfo && parkingNum)) {
       return;
     }
-    dispatch(
-      currentParkingActions.mergeParkInfo([parkingInfo?.park, parkingNum?.park])
-    );
-  }, [parkingInfo, parkingNum,dispatch]);
+    dispatch(currentParkingActions.mergeParkInfo([parkingInfo, parkingNum]));
+  }, [parkingInfo, parkingNum, dispatch]);
   // *** 放置地圖
   return (
     <div className="map-container container">

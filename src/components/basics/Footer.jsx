@@ -3,7 +3,7 @@ const Footer = () => {
     <footer>
       <div className="footer-container container">
         <div className="footer-wrapper">
-          <p className="footer-context">Copyright © 2023 </p>
+          <p className="footer-context">Copyright © 2023 KFR</p>
         </div>
       </div>
     </footer>

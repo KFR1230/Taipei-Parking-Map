@@ -12,10 +12,10 @@ const store = configureStore({
     crossPosition: crossPositionReducer,
     dataTheme: dataThemeReducer
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware({
+  //     serializableCheck: false,
+  //   }),
 });
 
 export default store;

@@ -9,10 +9,10 @@ export const getParkingInfo = createAsyncThunk(
   async () => {
     try {
       const res = await fetchingParkingInfo();
-      // console.log('getParkingInfo:', res.data.data);
       return res.data.data;
     } catch (error) {
-      console.log(error);
+      const res = error;
+      return res.response;
     }
   }
 );
@@ -22,10 +22,10 @@ export const getParkingNum = createAsyncThunk(
   async () => {
     try {
       const res = await fetchingParkingNum();
-      // console.log('getParkingNum:', res);
       return res.data.data;
     } catch (error) {
-      console.log(error);
+      const res = error
+      return res.response
     }
   }
 );
