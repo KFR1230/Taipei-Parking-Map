@@ -18,6 +18,7 @@ const Map = () => {
   const [latitude, setLatitude] = useState(center[0]);
   const [longitude, setLongitude] = useState(center[1]);
   const [isLocationLoading, setIsLocationLoading] = useState(false);
+  const [isMapLoading, setIsMapLoading] = useState(true);
   //取得initial state
   const { parkingInfo, isParkingInfoLoading, parkingInfoStatus } = useSelector(
     (state) => state.parkingInfo
@@ -32,7 +33,10 @@ const Map = () => {
 
   const checkStatus = useCallback(() => {
     if (!(parkingNumStatus && parkingInfoStatus)) {
-      alert('伺服器忙碌中，請幾秒後重新刷新');
+      setTimeout(() => {
+        alert('伺服器忙碌中，請幾秒後重新刷新');
+        setIsMapLoading(false);
+      }, 5000);
       return;
     }
   }, [parkingInfoStatus, parkingNumStatus]);
@@ -45,16 +49,17 @@ const Map = () => {
   };
   const handleClickTarget = async () => {
     setIsLocationLoading(true);
+    setIsMapLoading(true);
     await getCurrentPosition()
       .then((res) => {
         setLatitude(res.coords.latitude);
         setLongitude(res.coords.longitude);
-        setIsLocationLoading(false);
       }) //resolve
       .catch((error) => {
         console.log(error);
-        setIsLocationLoading(false);
       }); //reject
+    setIsLocationLoading(false);
+    setIsMapLoading(false);
   };
   const handleClickRefresh = () => {
     window.location.reload();
@@ -73,6 +78,7 @@ const Map = () => {
       return;
     }
     dispatch(currentParkingActions.mergeParkInfo([parkingInfo, parkingNum]));
+    setIsMapLoading(false);
   }, [parkingInfo, parkingNum, dispatch]);
   // *** 放置地圖
   return (
@@ -129,6 +135,7 @@ const Map = () => {
         onClick={handleClickTarget}
       />
       {nearlyPark && <CollapsePark latitude={latitude} longitude={longitude} />}
+      {isMapLoading && <div className="custom-loader"></div>}
     </div>
   );
 };
