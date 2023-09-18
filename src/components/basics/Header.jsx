@@ -1,15 +1,24 @@
+import { Alert, Snackbar } from '@mui/material';
 import clsx from 'clsx';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/spaces64.png';
 import { dataThemeActions } from '../../store/dataTheme';
+import { noticeModalActions } from '../../store/noticeModal';
+import Slide from '@mui/material/Slide';
 import NightModeBtn from './NightModeBtn';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {isOpen} = useSelector((state)=> state.noticeModal)
   const dispatch = useDispatch();
-  const navigation = useNavigate()
+  const navigation = useNavigate();
+
+  function SlideTransition(props) {
+    return <Slide {...props} direction="down" />;
+  }
+
   const handlerDarkMode = (e) => {
     if (e.target.checked === true) {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -25,12 +34,29 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const handlerClickLogo = () => {
-    navigation('/')
+    navigation('/');
   };
-
+  const handlerClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    dispatch(noticeModalActions.setUnOpenState());
+  };
+ 
   return (
     <header>
       <div className="header-container container">
+        <Snackbar
+          open={isOpen}
+          autoHideDuration={3000}
+          onClose={handlerClose}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          TransitionComponent={SlideTransition}
+        >
+          <Alert severity="error" sx={{ width: '100%' }} onClose={handlerClose}>
+            伺服器忙碌中，稍後幾秒重試 !
+          </Alert>
+        </Snackbar>
         <div className="header-wrapper">
           <nav className="nav-container">
             <section className="nav-title">

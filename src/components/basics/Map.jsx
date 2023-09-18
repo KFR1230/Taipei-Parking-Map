@@ -1,12 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { getParkingInfo, getParkingNum } from '../../actions/parkingAction';
 import twd97_to_latlng from '../../helper/covert';
 import getCurrentPosition from '../../helper/location';
 import { currentParkingActions } from '../../store/currentParkingInfo';
+import { noticeModalActions } from '../../store/noticeModal';
 import CenterCheck from './CenterCheck';
 import CollapsePark from './CollapsePark';
 import MapSearch from './MapSearch';
@@ -30,16 +30,6 @@ const Map = () => {
   const { nearlyPark } = useSelector((state) => state.crossPosition);
   const { themeMode } = useSelector((state) => state.dataTheme);
   const dispatch = useDispatch();
-
-  const checkStatus = useCallback(() => {
-    if (!(parkingNumStatus && parkingInfoStatus)) {
-      setTimeout(() => {
-        alert('伺服器忙碌中，請幾秒後重新刷新');
-        setIsMapLoading(false);
-      }, 5000);
-      return;
-    }
-  }, [parkingInfoStatus, parkingNumStatus]);
 
   const handlerClickLink = (name) => {
     window.open(
@@ -70,7 +60,18 @@ const Map = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    checkStatus();
+    if (!(parkingNumStatus && parkingInfoStatus)) {
+      const checkStatus = 
+      setTimeout(() => {
+          dispatch(noticeModalActions.setOpenState())
+          setIsMapLoading(false);
+        }, 3000);
+
+      return () => {
+        // 👇️ clear timeout when the component unmounts
+        clearTimeout(checkStatus);
+      };
+    }
   }, [parkingInfoStatus, parkingNumStatus]);
 
   useEffect(() => {
