@@ -3,7 +3,6 @@ function sort(array) {
   //要再花時間想一下如何修改成function programming
 
   array.forEach((a, index) => {
-    
     let mini = a['distance']; //設定初始值
     //交換事項次好幻象次好
     let miniIndex = index;
@@ -11,6 +10,7 @@ function sort(array) {
     selectSort(index + 1);
     function selectSort(index) {
       //從第二個開始 1
+      //array.length,到下一個沒東西
       if (index === array.length) {
         [array[currentIndex], array[miniIndex]] = [
           array[miniIndex],

@@ -38,6 +38,9 @@
       }
       .nav-info {
         display: flex;
+        & .nav-menu-list {
+          line-height: 25px;
+        }
         & .nav-menu .nav-menu-item {
           margin-left: 10px;
           color: var(--primary-text-color);
