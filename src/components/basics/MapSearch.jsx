@@ -9,7 +9,6 @@ const MapSearch = () => {
     iconSize: [32, 32],
   });
   const map = useMap();
-  
 
   const searchControl = new GeoSearchControl({
     provider: new OpenStreetMapProvider({
@@ -38,6 +37,7 @@ const MapSearch = () => {
   useEffect(() => {
     map.addControl(searchControl);
     return () => map.removeControl(searchControl);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

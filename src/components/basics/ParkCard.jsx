@@ -1,13 +1,12 @@
 import Button from '@mui/material/Button';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ParkCard = (park) => {
-  const { name, availablecar, lat, lng } = park.park;
+  const { name, availablecar } = park.park;
   const { onClick } = park;
   const [isavailablecar, setIsAvailablecar] = useState(false);
-  
 
   // const handlermoveToPosition = useCallback(() => {
   //   map.setView([lat, lng], 16);
@@ -22,6 +21,7 @@ const ParkCard = (park) => {
       setIsAvailablecar(true);
     }
     isAvailablecarNum();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [park]);
 
   return (

@@ -20,10 +20,10 @@ const Map = () => {
   const [isLocationLoading, setIsLocationLoading] = useState(false);
   const [isMapLoading, setIsMapLoading] = useState(true);
   //取得initial state
-  const { parkingInfo, isParkingInfoLoading, parkingInfoStatus } = useSelector(
+  const { parkingInfo, parkingInfoStatus } = useSelector(
     (state) => state.parkingInfo
   );
-  const { parkingNum, isParkingNumLoading, parkingNumStatus } = useSelector(
+  const { parkingNum, parkingNumStatus } = useSelector(
     (state) => state.parkingNum
   );
   const { currentPark } = useSelector((state) => state.currentParking);
@@ -61,17 +61,17 @@ const Map = () => {
 
   useEffect(() => {
     if (!(parkingNumStatus && parkingInfoStatus)) {
-      const checkStatus = 
-      setTimeout(() => {
-          dispatch(noticeModalActions.setOpenState())
-          setIsMapLoading(false);
-        }, 3000);
+      const checkStatus = setTimeout(() => {
+        dispatch(noticeModalActions.setOpenState());
+        setIsMapLoading(false);
+      }, 3000);
 
       return () => {
         // 👇️ clear timeout when the component unmounts
         clearTimeout(checkStatus);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parkingInfoStatus, parkingNumStatus]);
 
   useEffect(() => {

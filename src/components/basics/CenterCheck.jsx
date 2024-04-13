@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useMap, useMapEvents } from 'react-leaflet';
@@ -18,11 +18,12 @@ const CenterCheck = ({ latitude, longitude }) => {
     dragend: getCenterPosition,
   });
   useEffect(() => {
-    dispatch(crossPositionActions.setNearlyParkLoading())
+    dispatch(crossPositionActions.setNearlyParkLoading());
     dispatch(
       crossPositionActions.setNearlyPark({ currentPark, centerPosition })
     );
     dispatch(crossPositionActions.setNearlyParkLoaded());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [centerPosition, currentPark, latitude, longitude]);
 
   return <></>;

@@ -5,7 +5,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './components/pages/HomePage';
 import DescriptionPage from './components/pages/DescriptionPage';
 function App() {
-  const basename = process.env.PUBLIC_URL;
+  // const basename = process.env.PUBLIC_URL;
   return (
     <HashRouter>
       <Routes>

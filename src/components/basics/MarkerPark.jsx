@@ -7,23 +7,23 @@ import noParking from '../../assets/images/noPark32.png';
 import googlePng from '../../assets/images/google-maps.png';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const MarkerPark = (...props) => {
   const { lat, lng, park, onClick } = props[0];
-  const [isavailablecar,setIsAvailablecar] = useState(true)
+  const [isavailablecar, setIsAvailablecar] = useState(true);
   // };
 
-  useEffect(()=>{
+  useEffect(() => {
     function isAvailablecarNum() {
       if (park.availablecar <= 0) {
         setIsAvailablecar(false);
-        return
+        return;
       }
       setIsAvailablecar(true);
     }
     isAvailablecarNum();
-  },[park])
+  }, [park]);
   const ParkIcon = new icon({
     iconUrl: parking,
     iconSize: [32, 32],
