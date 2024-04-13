@@ -11,7 +11,7 @@ import NightModeBtn from './NightModeBtn';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {isOpen} = useSelector((state)=> state.noticeModal)
+  const { isOpen } = useSelector((state) => state.noticeModal);
   const dispatch = useDispatch();
   const navigation = useNavigate();
 
@@ -42,7 +42,7 @@ const Header = () => {
     }
     dispatch(noticeModalActions.setUnOpenState());
   };
- 
+
   return (
     <header>
       <div className="header-container container">
@@ -70,10 +70,12 @@ const Header = () => {
             </section>
             <section className="nav-info">
               <NightModeBtn onChange={handlerDarkMode} />
-              <button
-                className={`nav-menu-btn ${clsx('', { active: isMenuOpen })}`}
-                onClick={handlerMenuMode}
-              />
+              <div className="nav-menu-icon">
+                <button
+                  className={`nav-menu-btn ${clsx('', { active: isMenuOpen })}`}
+                  onClick={handlerMenuMode}
+                />
+              </div>
               <div className={`nav-menu ${clsx('', { active: isMenuOpen })}`}>
                 <div className="nav-menu-list">
                   <Link to="/" className="nav-menu-item">
