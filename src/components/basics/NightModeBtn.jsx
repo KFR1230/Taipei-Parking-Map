@@ -1,10 +1,10 @@
-const NightModeBtn = ({onChange}) => {
+const NightModeBtn = ({ onChange }) => {
   return (
     <div className="night-mode">
-      <label
+      {/* <label
         className="sidebar__darkmode__label"
         htmlFor="dark__mode__toggle"
-      ></label>
+      ></label> */}
       <input
         type="checkbox"
         className="night-mode-btn"
